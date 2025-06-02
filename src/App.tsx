@@ -4,6 +4,8 @@ import { FaCrown } from 'react-icons/fa';
 import FlipClockCountdown from '@leenguyen/react-flip-clock-countdown';
 import '@leenguyen/react-flip-clock-countdown/dist/index.css';
 import backgroundImage from './assets/background.svg';
+
+import bgmobile2Image from './assets/bg.svg';
 import logo from './assets/logo/logo.svg';
 import { useTickSound } from './hooks/useTickSound';
 
@@ -28,8 +30,24 @@ function App() {
 
 
   return (
-    <div className="min-h-screen bg-cover bg-center font-krona" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-cover font-krona relative">
+      <style>{`
+        .background-container {
+          background-image: url(${bgmobile2Image});
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          min-height: 100vh;
+        }
+        
+        @media (min-width: 768px) {
+          .background-container {
+            background-image: url(${backgroundImage});
+          }
+        }
+      `}</style>
+      <div className="background-container absolute inset-0"></div>
+      <div className="container mx-auto px-4 py-8 relative">
         <div className="flex flex-col items-center md:items-end justify-center min-h-screen md:pr-8 lg:pr-16 xl:pr-24">
           {/* Logo with loader */}
           <div className="relative w-44 h-44 mb-8 flex items-center justify-center">
