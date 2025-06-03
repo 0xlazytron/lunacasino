@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 import { FaCrown } from 'react-icons/fa';
-import FlipClockCountdown from '@leenguyen/react-flip-clock-countdown';
-import '@leenguyen/react-flip-clock-countdown/dist/index.css';
+
+
 import backgroundImage from './assets/background.svg';
 
 import bgmobile2Image from './assets/bg.svg';
 import logo from './assets/logo/logo.svg';
-import { useTickSound } from './hooks/useTickSound';
+// import { useTickSound } from './hooks/useTickSound';
+import Timer from './components/Timer';
 
 function App() {
   const [endTime] = useState(() => {
@@ -20,7 +21,7 @@ function App() {
     return thirtyDaysFromNow.getTime();
   });
 
-  const { playTick } = useTickSound();
+  // const { playTick } = useTickSound();
   const [isLogoLoading, setIsLogoLoading] = useState(true);
 
   useEffect(() => {
@@ -66,36 +67,7 @@ function App() {
             LAUNCH IN
           </h1>
 
-          <div className="mb-8">
-            <FlipClockCountdown
-              to={endTime}
-              labels={['DAYS', 'HOURS', 'MINUTES', 'SECONDS']}
-              labelStyle={{
-                fontSize: 14,
-                fontWeight: 500,
-                textTransform: 'uppercase',
-                color: '#ffffff'
-              }}
-              digitBlockStyle={{
-                width: 40,
-                height: 60,
-                fontSize: 30,
-                backgroundColor: 'transparent',
-                color: '#ffffff',
-                border: '1px solid rgba(255, 255, 255, 0.3)'
-              }}
-              dividerStyle={{
-                color: '#ffffff',
-                height: 1
-              }}
-              separatorStyle={{
-                color: '#ffffff',
-                size: '6px'
-              }}
-              duration={0.5}
-              onTick={playTick}
-            />
-          </div>
+          <Timer targetDate={new Date(endTime).toISOString()} />
 
           <h2 className="text-3xl md:text-4xl text-white font-bold mt-12 mb-8 text-center md:text-right">
             Become a Luna Founder
