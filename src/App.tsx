@@ -4,9 +4,9 @@ import { FaCrown } from 'react-icons/fa';
 
 
 import backgroundImage from './assets/background.svg';
-
 import bgmobile2Image from './assets/bg.svg';
 import logo from './assets/logo/logo.svg';
+// import vipIcon from './assets/vip-icon.svg';
 // import { useTickSound } from './hooks/useTickSound';
 import Timer from './components/Timer';
 
@@ -46,9 +46,24 @@ function App() {
             background-image: url(${backgroundImage});
           }
         }
+
+        @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 10px 2px rgba(255, 211, 110, 0.7); }
+          50% { box-shadow: 0 0 20px 5px rgba(255, 211, 110, 0.9); }
+        }
       `}</style>
       <div className="background-container absolute inset-0"></div>
       <div className="container mx-auto px-4 py-8 relative">
+        {/* VIP Access Button */}
+        <div className="flex justify-end mb-4 md:pr-8 lg:pr-16 xl:pr-24">
+          <button
+            className="px-5 py-3 text-sm font-bold text-white rounded-full bg-gradient-to-r from-[#FFD36E] to-[#A58141] hover:opacity-90 transition-all flex items-center animate-[pulse-glow_2s_infinite] shadow-lg"
+            onClick={() => window.open('https://lunafounder.io/vip', '_blank')}
+          >
+            <FaCrown className="inline-block mr-2 text-lg" />VIP ACCESS
+          </button>
+        </div>
+
         <div className="flex flex-col items-center md:items-end justify-center min-h-screen md:pr-8 lg:pr-16 xl:pr-24">
           {/* Logo with loader */}
           <div className="relative w-44 h-44 mb-8 flex items-center justify-center">
